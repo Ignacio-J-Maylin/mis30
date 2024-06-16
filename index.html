@@ -6,25 +6,30 @@
     <title>Invitación a mi Cumpleaños</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffcc00; /* Amarillo estilo 90s */
+            color: #000;
             text-align: center;
             padding: 20px;
+            margin: 0;
         }
         .container {
-            max-width: 600px;
+            max-width: 800px; /* Ampliamos el ancho para más contenido */
             margin: 0 auto;
-            background: white;
+            background: #fff;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             border-radius: 10px;
         }
         h1 {
-            color: #ff4081;
+            color: #ff4081; /* Rosa neón */
+            font-size: 36px; /* Fuente grande estilo 90s */
+            margin-bottom: 20px; /* Espaciado inferior */
         }
         p {
             font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
         .form-container {
             margin-top: 20px;
@@ -37,39 +42,93 @@
             border-radius: 5px;
         }
         input[type="submit"] {
-            background-color: #ff4081;
+            background-color: #ff4081; /* Rosa neón */
             color: white;
             border: none;
             cursor: pointer;
         }
         input[type="submit"]:hover {
-            background-color: #e73370;
+            background-color: #e73370; /* Rosa más oscuro al pasar */
         }
         .guest-list {
             margin-top: 20px;
             text-align: left;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        th {
+            background-color: #ff4081; /* Rosa neón */
+            color: white;
+        }
+        th, td {
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>¡Estás Invitado!</h1>
-        <p>Únete a la celebración de mi cumpleaños número 30</p>
+        <p>Únete a la celebración de mi cumpleaños número 30 con temática de los años 90.</p>
         <p><strong>Fecha:</strong> Sábado, 29 de junio</p>
         <p><strong>Lugar:</strong> Manda un mensaje para conocer el lugar</p>
         
         <div class="form-container">
             <h2>Confirma tu asistencia</h2>
-            <form action="https://docs.google.com/forms/d/1UeLesS7D62FtzEBaBWiWGrpe4KmKG0bsP6LNZY7u5v4/edit#responses" target="_blank">
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLScWV7mQtmt7h1Q4fDwt8SwNzYP7bsI6TJa8N5gdjTJtMepmwg/viewform" target="_blank">
                 <input type="text" name="entry.xxxxxxxxxxx" placeholder="Tu Nick" required>
                 <input type="submit" value="Enviar">
-            </form>
+            </form>           
         </div>
         
         <div class="guest-list">
             <h2>Lista de Asistentes</h2>
-            <iframe src="https://docs.google.com/spreadsheets/d/16uJJNuA7vzTgMXAf7_FV-su0UpxW4mfAB06bQwbzx7k/edit?resourcekey=&gid=1859368798#gid=1859368798" width="100%" height="300"></iframe>
+            <table id="guestTable">
+                <thead>
+                    <tr>
+                        <th>Nick</th>
+                    </tr>
+                </thead>
+                <tbody id="guestTableBody">
+                    <!-- Aquí se mostrarán los asistentes -->
+                </tbody>
+            </table>
         </div>
     </div>
+
+    <!-- Script para obtener y mostrar los asistentes -->
+    <script>
+        // URL de la API de Sheetsu
+        var sheetDataURL = 'https://sheetsu.com/apis/v1.0su/84597a7145a7';
+
+        // Obtener la tabla de asistentes
+        var guestTableBody = document.getElementById('guestTableBody');
+
+        // Función para cargar los asistentes desde la API de Sheetsu
+        function loadGuests() {
+            fetch(sheetDataURL)
+                .then(response => response.json())
+                .then(data => {
+                    guestTableBody.innerHTML = '';
+                    data.forEach(function(guest) {
+                        var row = guestTableBody.insertRow();
+                        var cell = row.insertCell();
+                        cell.textContent = guest.nick;
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Cargar los asistentes al cargar la página
+        window.onload = function() {
+            loadGuests();
+        };
+    </script>
 </body>
 </html>
