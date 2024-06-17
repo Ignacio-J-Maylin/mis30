@@ -1,5 +1,5 @@
 # Usa una imagen base de Java 17
-FROM openjdk:17-jdk-alpine
+FROM openjdk:17-oracle
 
 # Refer to Maven build -> finalName
 ARG JAR_FILE=target/*.jar
