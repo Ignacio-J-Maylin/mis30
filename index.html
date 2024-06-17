@@ -1,10 +1,12 @@
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Collage Background</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="floating-container">
@@ -14,12 +16,13 @@
             <button onclick="showForm()">confirmar</button>
         </div>
 
-        <div class="form-container"  id="formContainer">
+        <div class="form-container" id="formContainer">
             <h2>Confirma tu asistencia</h2>
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLScWV7mQtmt7h1Q4fDwt8SwNzYP7bsI6TJa8N5gdjTJtMepmwg/viewform" target="_blank">
-                <input type="text" name="entry.xxxxxxxxxxx" placeholder="Tu Nick" required>
+            <form id="confirmationForm" onsubmit="submitForm(event)">
+                <input type="text" id="nickInput" placeholder="Tu Nick" required>
+                <input type="text" id="msgInput" placeholder="Tu Mensaje" required>
                 <input type="submit" value="Enviar">
-            </form>           
+            </form>
         </div>
 
         <div id="infoContainer">
@@ -27,16 +30,18 @@
             <p>Únete a la celebración de mi cumpleaños número 30 con temática de los años 90.</p>
             <p><strong>Fecha:</strong> Sábado, 29 de junio</p>
             <p><strong>Lugar:</strong> Manda un mensaje para conocer el lugar</p>
-    
+
             <div class="form-container">
                 <h2>Confirma tu asistencia</h2>
-                <form action="https://docs.google.com/forms/d/e/1FAIpQLScWV7mQtmt7h1Q4fDwt8SwNzYP7bsI6TJa8N5gdjTJtMepmwg/viewform" target="_blank">
+                <form
+                    action="https://docs.google.com/forms/d/e/1FAIpQLScWV7mQtmt7h1Q4fDwt8SwNzYP7bsI6TJa8N5gdjTJtMepmwg/viewform"
+                    target="_blank">
                     <input type="text" name="entry.xxxxxxxxxxx" placeholder="Tu Nick" required>
                     <input type="submit" value="Enviar">
-                </form>           
+                </form>
             </div>
         </div>
-    
+
         <div class="guest-list" id="guestListContainer">
             <h2>Lista de Asistentes</h2>
             <table id="guestTable">
@@ -51,7 +56,7 @@
             </table>
         </div>
     </div>
-    
+
     <!-- Imágenes de fondo -->
     <div class="background-image" style="background-image: url('img/background/1.jpg');"></div>
     <div class="background-image" style="background-image: url('img/background/2.jpg');"></div>
@@ -83,80 +88,108 @@
     <div class="background-image" style="background-image: url('img/background/28.jpg');"></div>
     <div class="background-image" style="background-image: url('img/background/29.jpg');"></div>
     <div class="background-image" style="background-image: url('img/background/30.jpg');"></div>
- 
+
     <script>
 
-function showInfo() {
-    document.getElementById('infoContainer').style.display = 'block';
-    document.getElementById('guestListContainer').style.display = 'none';
-    document.getElementById('formContainer').style.display = 'none';
-}
+        function showInfo() {
+            document.getElementById('infoContainer').style.display = 'block';
+            document.getElementById('guestListContainer').style.display = 'none';
+            document.getElementById('formContainer').style.display = 'none';
+        }
 
-function showGuestList() {
-    document.getElementById('infoContainer').style.display = 'none';
-    document.getElementById('guestListContainer').style.display = 'block';
-    document.getElementById('formContainer').style.display = 'none';
-}
+        function showGuestList() {
+            document.getElementById('infoContainer').style.display = 'none';
+            document.getElementById('guestListContainer').style.display = 'block';
+            document.getElementById('formContainer').style.display = 'none';
+            loadGuests(); // Actualizar la lista de invitados al mostrarla
+        }
 
-function showForm() {
-    document.getElementById('infoContainer').style.display = 'none';
-    document.getElementById('guestListContainer').style.display = 'none';
-    document.getElementById('formContainer').style.display = 'block';
-}
+        function showForm() {
+            document.getElementById('infoContainer').style.display = 'none';
+            document.getElementById('guestListContainer').style.display = 'none';
+            document.getElementById('formContainer').style.display = 'block';
+        }
 
 
-        // URL de la API de Sheetsu
-        var sheetDataURL = 'https://sheetsu.com/apis/v1.0su/84597a7145a7';
+        var apiBaseURL = 'http://localhost:8080';
 
         // Obtener la tabla de asistentes
         var guestTableBody = document.getElementById('guestTableBody');
 
-        // Función para cargar los asistentes desde la API de Sheetsu
         function loadGuests() {
-            fetch(sheetDataURL)
+    fetch(apiBaseURL + '/guests?page=0&size=10')
+        .then(response => response.json())
+        .then(data => {
+            guestTableBody.innerHTML = '';
+            data.forEach(function (guest) {
+                var row = guestTableBody.insertRow();
+                var cellNick = row.insertCell();
+                cellNick.textContent = guest.nick;
+                var cellMsg = row.insertCell();
+                cellMsg.textContent = guest.msg;
+            });
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+        // Cargar los asistentes al cargar la página
+        window.onload = function () {
+            loadGuests();
+            showInfo();  // Muestra la información por defecto al cargar la página
+        };
+
+        // Función para seleccionar un número aleatorio entre min y max (incluyendo ambos)
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Función para intercambiar la posición de dos elementos en un array
+        function swapElements(arr, indexA, indexB) {
+            const temp = arr[indexA].style.backgroundImage;
+            arr[indexA].style.backgroundImage = arr[indexB].style.backgroundImage;
+            arr[indexB].style.backgroundImage = temp;
+        }
+
+        function swapRandomImages() {
+            const images = document.querySelectorAll('.background-image');
+            const randomIndexA = getRandomInt(0, images.length - 1);
+            let randomIndexB = getRandomInt(0, images.length - 1);
+            while (randomIndexB === randomIndexA) { // Aseguramos que no se elija el mismo índice
+                randomIndexB = getRandomInt(0, images.length - 1);
+            }
+            swapElements(images, randomIndexA, randomIndexB);
+        }
+
+        setInterval(swapRandomImages, 150);
+
+
+
+        function submitForm(event) {
+            event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+            var nick = document.getElementById('nickInput').value;
+            var msg = document.getElementById('msgInput').value;
+
+            // Enviar datos a la API
+            fetch(apiBaseURL + '/guests', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nick: nick, msg: msg })
+            })
                 .then(response => response.json())
                 .then(data => {
-                    guestTableBody.innerHTML = '';
-                    data.forEach(function(guest) {
-                        var row = guestTableBody.insertRow();
-                        var cell = row.insertCell();
-                        cell.textContent = guest.nick;
-                    });
+                    alert('Asistencia confirmada');
+                    document.getElementById('confirmationForm').reset();
+                    loadGuests(); // Volver a cargar la lista de invitados
                 })
                 .catch(error => console.error('Error:', error));
         }
-
-// Cargar los asistentes al cargar la página
-window.onload = function() {
-    loadGuests();
-    showInfo();  // Muestra la información por defecto al cargar la página
-};
-
-// Función para seleccionar un número aleatorio entre min y max (incluyendo ambos)
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-// Función para intercambiar la posición de dos elementos en un array
-function swapElements(arr, indexA, indexB) {
-    const temp = arr[indexA].style.backgroundImage;
-    arr[indexA].style.backgroundImage = arr[indexB].style.backgroundImage;
-    arr[indexB].style.backgroundImage = temp;
-}
-
-function swapRandomImages() {
-    const images = document.querySelectorAll('.background-image');
-    const randomIndexA = getRandomInt(0, images.length - 1);
-    let randomIndexB = getRandomInt(0, images.length - 1);
-    while (randomIndexB === randomIndexA) { // Aseguramos que no se elija el mismo índice
-        randomIndexB = getRandomInt(0, images.length - 1);
-    }
-    swapElements(images, randomIndexA, randomIndexB);
-}
-
-setInterval(swapRandomImages, 150);
     </script>
-    
+
 
 </body>
+
 </html>
