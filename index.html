@@ -117,7 +117,11 @@
         var guestTableBody = document.getElementById('guestTableBody');
 
         function loadGuests() {
-    fetch(apiBaseURL + '/guests?page=0&size=10')
+    fetch(apiBaseURL + '/guests?page=0&size=10', {
+        headers: {
+            'Referer': 'https://15.228.159.190'
+        }
+    })
         .then(response => response.json())
         .then(data => {
             guestTableBody.innerHTML = '';
