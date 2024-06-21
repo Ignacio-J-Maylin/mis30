@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  mis30api:
+    image: mis30api
+    ports:
+      - "8080:8080"

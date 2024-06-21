@@ -3,6 +3,9 @@ package com.mis30.demo.controller;
 import com.mis30.demo.domain.Chat;
 import com.mis30.demo.repository.ChatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +18,9 @@ public class ChatController {
     private ChatRepository chatRepository;
 
     @GetMapping
-    public List<Chat> getAllChats() {
-        return chatRepository.findAll();
+    public List<Chat> getchats() {
+        Pageable pageable = PageRequest.of(0, 50, Sort.by(Sort.Direction.DESC, "id"));
+        return chatRepository.findAll(pageable).getContent();
     }
 
     @PostMapping

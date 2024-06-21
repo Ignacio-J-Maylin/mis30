@@ -1,59 +1,84 @@
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Collage Background</title>
+    <title>Back to the 90s</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div class="floating-container">
-        <div class="buttons-container">
-            <button onclick="showInfo()">Información</button>
-            <button onclick="showGuestList()">Lista de Invitados</button>
-            <button onclick="showForm()">confirmar</button>
+        <div class="nav-buttons-container">
+            <button onclick="prevView()">&lt;</button>
+            <button id="minimizeMaximizeBtn" onclick="minimizeOrMaximizeViews()">Minimizar</button>
+            <button onclick="nextView()">&gt;</button>
         </div>
 
-        <div class="form-container" id="formContainer">
-            <h2>Confirma tu asistencia</h2>
+
+        <div class="view-container active" id="infoContainer">
+            <h1>The 90s Come Back!</h1>
+            <h4>Con el Colo , Car y Nachi te invitamos a nuestros.</h4>
+            <p>Prepárense para una noche llena de nostalgia, música y diversión de los 90. Les pedimos venir vestidos con su mejor atuendo de los años 90, ya sea inspirado en su serie favorita, estrella pop, o simplemente con la moda de la época.</p>
+
+        </div>
+
+        <div class="view-container active" id="info2Container">
+            <h1>INFO</h1>
+            <p><strong>Comida:</strong> Pizzetitas , Salchicha Envueltas, Papitas. agregate a la lista </p>
+            <p><strong>Dulce:</strong> Browne loco, Ositos borrachitos </p>
+            <p><strong>Bebida: Traer para compartir </strong></p>
+            <p><strong>Fecha:</strong> Sábado, 29 de junio</p>
+            <p><strong>Lugar:</strong> Manda un mensaje a los cumplañeros para conocer el lugar</p>
+            <p><strong>Obs:</strong> luz negra, cotillon , gliter, karaoke, beer pong</p>
+        </div>
+        <div class="view-container" id="formContainer">
+            <h1>Confirma tu asistencia</h1>
             <form id="confirmationForm" onsubmit="submitForm(event)">
-                <input type="text" id="nickInput" placeholder="Tu Nick" required>
-                <input type="text" id="msgInput" placeholder="Tu Mensaje" required>
+                <input type="text" id="nickInput" placeholder="Nick" required>
+                <input type="text" id="msgInput" placeholder="Fantacia" required>
                 <input type="submit" value="Enviar">
             </form>
-        </div>
-
-        <div id="infoContainer">
-            <h1>¡Estás Invitado!</h1>
-            <p>Únete a la celebración de mi cumpleaños número 30 con temática de los años 90.</p>
-            <p><strong>Fecha:</strong> Sábado, 29 de junio</p>
-            <p><strong>Lugar:</strong> Manda un mensaje para conocer el lugar</p>
-
-            <div class="form-container">
-                <h2>Confirma tu asistencia</h2>
-                <form
-                    action="https://docs.google.com/forms/d/e/1FAIpQLScWV7mQtmt7h1Q4fDwt8SwNzYP7bsI6TJa8N5gdjTJtMepmwg/viewform"
-                    target="_blank">
-                    <input type="text" name="entry.xxxxxxxxxxx" placeholder="Tu Nick" required>
-                    <input type="submit" value="Enviar">
-                </form>
-            </div>
-        </div>
-
-        <div class="guest-list" id="guestListContainer">
-            <h2>Lista de Asistentes</h2>
+            <h1>Confirmados</h1>
             <table id="guestTable">
                 <thead>
                     <tr>
                         <th>Nick</th>
+                        <th>Fantacia</th>
                     </tr>
                 </thead>
                 <tbody id="guestTableBody">
-                    <!-- Aquí se mostrarán los asistentes -->
                 </tbody>
             </table>
+        </div>
+
+        <div class="view-container" id="chatContainer">
+            <h1>Agregar un mensaje</h1>
+            <form id="chatForm" onsubmit="submitChat(event)">
+                <input type="text" id="nickInput2" placeholder="Tu Nick" required>
+                <input type="text" id="msgInput2" placeholder="Tu Mensaje" required>
+                <input type="submit" value="Enviar">
+            </form>
+            <h2>Chat</h2>
+            <table id="chatTable">
+                <thead>
+                    <tr>
+                        <th>Últimos mensajes</th>
+                    </tr>
+                </thead>
+                <tbody id="chatTableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="view-container" id="spotifyPlaylistContainer">
+            <h1 class="playlist-heading">Playlist de Spotify</h1>
+            <ul class="playlist-list">
+                <li><a href="https://open.spotify.com/playlist/0OlM5SEfN3G07ZJDYQtSuf?si=545878ee8d774be1&pt=4b7db7c590b18a7bb30b27aba54f925f" target="_blank">Internacional o bizarras</a></li>
+                <li><a href=" https://open.spotify.com/playlist/7LcJY3VV8NEyUc5r4FbL4x?si=fe0e4819bb3b4577&pt=37f5d85628fee1ab34aa2819d342e858" target="_blank">Reggueton</a></li>            
+            </ul>
         </div>
     </div>
 
@@ -90,84 +115,90 @@
     <div class="background-image" style="background-image: url('img/background/30.jpg');"></div>
 
     <script>
+        const views = document.querySelectorAll('.view-container');
+        let currentViewIndex = 0;
+        let lastViewIndex = 0; // Variable para almacenar el índice de la última vista activa
 
-        function showInfo() {
-            document.getElementById('infoContainer').style.display = 'block';
-            document.getElementById('guestListContainer').style.display = 'none';
-            document.getElementById('formContainer').style.display = 'none';
+        function updateView() {
+            views.forEach((view, index) => {
+                view.classList.toggle('active', index === currentViewIndex);
+            });
         }
 
-        function showGuestList() {
-            document.getElementById('infoContainer').style.display = 'none';
-            document.getElementById('guestListContainer').style.display = 'block';
-            document.getElementById('formContainer').style.display = 'none';
-            loadGuests(); // Actualizar la lista de invitados al mostrarla
+        function prevView() {
+            currentViewIndex = (currentViewIndex - 1 + views.length) % views.length;
+            updateView();
         }
 
-        function showForm() {
-            document.getElementById('infoContainer').style.display = 'none';
-            document.getElementById('guestListContainer').style.display = 'none';
-            document.getElementById('formContainer').style.display = 'block';
+        function nextView() {
+            currentViewIndex = (currentViewIndex + 1) % views.length;
+            updateView();
         }
 
+        function minimizeOrMaximizeViews() {
+            const minimizeMaximizeBtn = document.getElementById('minimizeMaximizeBtn');
 
-        var apiBaseURL = 'https://15.228.159.190/mis-treinta';
+            if (minimizeMaximizeBtn.textContent === 'Minimizar') {
+                minimizeViews();
+                minimizeMaximizeBtn.textContent = 'Maximizar';
+            } else {
+                maximizeViews();
+                minimizeMaximizeBtn.textContent = 'Minimizar';
+            }
+        }
 
-        // Obtener la tabla de asistentes
-        var guestTableBody = document.getElementById('guestTableBody');
+        function minimizeViews() {
+            views.forEach((view, index) => {
+                if (view.classList.contains('active')) {
+                    lastViewIndex = index; // Almacena el índice de la última vista activa
+                }
+                view.classList.remove('active');
+            });
+        }
+
+        function maximizeViews() {
+            currentViewIndex = lastViewIndex; // Vuelve a la última vista activa antes de minimizar
+            updateView();
+        }
+        var apiBaseURL = 'http://localhost:8080';
 
         function loadGuests() {
-    fetch(apiBaseURL + '/guests?page=0&size=10', {
-        headers: {
-            'Referer': 'https://15.228.159.190'
+            fetch(apiBaseURL + '/guests?page=0&size=10')
+                .then(response => response.json())
+                .then(data => {
+                    guestTableBody.innerHTML = '';
+                    data.forEach(function (guest) {
+                        var row = guestTableBody.insertRow();
+                        var cellNick = row.insertCell();
+                        cellNick.textContent = guest.nick;
+                        var cellMsg = row.insertCell();
+                        cellMsg.textContent = guest.msg;
+                    });
+                })
+                .catch(error => console.error('Error:', error));
         }
-    })
-        .then(response => response.json())
-        .then(data => {
-            guestTableBody.innerHTML = '';
-            data.forEach(function (guest) {
-                var row = guestTableBody.insertRow();
-                var cellNick = row.insertCell();
-                cellNick.textContent = guest.nick;
-                var cellMsg = row.insertCell();
-                cellMsg.textContent = guest.msg;
-            });
-        })
-        .catch(error => console.error('Error:', error));
-}
 
+
+        function loadChats() {
+            fetch(apiBaseURL + '/chats')
+                .then(response => response.json())
+                .then(data => {
+                    chatTableBody.innerHTML = '';
+                    data.forEach(function (chat) {
+                        var row = chatTableBody.insertRow();
+                        var cellMsg = row.insertCell();
+                        cellMsg.textContent = chat.msg;
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
 
         // Cargar los asistentes al cargar la página
         window.onload = function () {
             loadGuests();
-            showInfo();  // Muestra la información por defecto al cargar la página
+            loadChats();
+            updateView();  // Muestra la información por defecto al cargar la página
         };
-
-        // Función para seleccionar un número aleatorio entre min y max (incluyendo ambos)
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-
-        // Función para intercambiar la posición de dos elementos en un array
-        function swapElements(arr, indexA, indexB) {
-            const temp = arr[indexA].style.backgroundImage;
-            arr[indexA].style.backgroundImage = arr[indexB].style.backgroundImage;
-            arr[indexB].style.backgroundImage = temp;
-        }
-
-        function swapRandomImages() {
-            const images = document.querySelectorAll('.background-image');
-            const randomIndexA = getRandomInt(0, images.length - 1);
-            let randomIndexB = getRandomInt(0, images.length - 1);
-            while (randomIndexB === randomIndexA) { // Aseguramos que no se elija el mismo índice
-                randomIndexB = getRandomInt(0, images.length - 1);
-            }
-            swapElements(images, randomIndexA, randomIndexB);
-        }
-
-        setInterval(swapRandomImages, 150);
-
-
 
         function submitForm(event) {
             event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
@@ -191,8 +222,32 @@
                 })
                 .catch(error => console.error('Error:', error));
         }
-    </script>
 
+
+
+        function submitChat(event) {
+            event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+            var nick = document.getElementById('nickInput2').value;
+            var msg = document.getElementById('msgInput2').value;
+            var newMsg = nick + ': ' + msg; // Crear un string con el formato nick: msg
+
+            // Enviar datos a la API
+            fetch(apiBaseURL + '/chats', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ msg: newMsg }) // Enviar el string como parte de un objeto JSON
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('msgInput2').value = ''; // Limpiar el campo msgInput2
+                    loadChats(); // Volver a cargar la lista de chat
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
 
 </body>
 
