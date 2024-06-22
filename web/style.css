@@ -18,8 +18,8 @@ body {
 
 .floating-container {
     width: 100%;
-    display: flex; /* Agrega display flex */
-    flex-direction: column; /* Alinea los elementos en columna */
+    display: flex; 
+    flex-direction: column; 
     align-items: flex-center; 
 }
 
@@ -40,7 +40,7 @@ body {
     margin-left: 10px;
     font-size: 18px;
     margin-bottom: 10px;
-    color: #000; /* Texto negro */
+    color: #000; 
 }
 
 .form-container input[type="text"],
@@ -48,47 +48,47 @@ body {
     width: calc(95% - 22px);
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ffcc00c7; /* Borde oscuro */
+    border: 1px solid #ffcc00c7; 
     border-radius: 5px;
-    background-color: #ffcc004b; /* Fondo oscuro */
-    color: #000; /* Texto blanco */
+    background-color: #ffcc004b;
+    color: #000;
 }
 
 .form-container input[type="text"]::placeholder {
-    color: #888; /* Color de placeholder */
+    color: #888; 
 }
 
 .form-container input[type="submit"] , .button-submit{
-    background-color: #ffcd00ba; /* Color amarillo Pac-Man */
-    color: black; /* Texto negro */
+    background-color: #ffcd00ba; 
+    color: black;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .form-container input[type="submit"]:hover, .button-submit:hover {
-    background-color: #ffea70; /* Color más claro al pasar el cursor */
+    background-color: #ffea70; 
 }
 
 .form-container input[type="submit"]:active, .button-submit:active {
-    background-color: #e6b800; /* Color al hacer clic */
+    background-color: #e6b800; 
 }
 
 .form-container {
     margin-top: 20px;
     max-width: 95%; 
-    text-align: center; /* Centrar los inputs */
-    display: flex; /* Agrega display flex */
-    flex-direction: column; /* Alinea los elementos en columna */
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
 }
 
 .form-container input[type="text"] {
     margin-bottom: 15px;
-    font-size: 16px; /* Aumenta el tamaño de fuente */
+    font-size: 16px;
 }
 
 .view-container {
-    display: none;/* Ajusta el ancho máximo del formulario */
+    display: none;
     margin: 0 auto; 
 }
 
@@ -99,28 +99,26 @@ body {
 .minimized {
     display: none;
 }
-/* Ajustes generales para tablas */
+
 table {
     width: 100%;
     word-wrap: break-word;
     table-layout: fixed;
 }
 
-/* Estilo para encabezados generales */
 th, td {
     padding: 10px;
     border-radius: 15px;
     color: #0000005e;
 }
 
-/* Estilo específico para la tabla de la lista de invitados */
 #guestTable {
     width: 100%;
-    margin-top: 20px; /* Añade margen superior para separar visualmente */
+    margin-top: 20px; 
 }
 
 #guestTable thead {
-    display: none; /* Ocultar encabezado de tabla */
+    display: none; 
 }
 
 #guestTableBody {
@@ -136,14 +134,14 @@ th, td {
     margin: 10px 0;
     padding: 10px;
     border-radius: 10px;
-    background-color: #e6b8003b; /* Fondo oscuro para las filas */
+    background-color: #e6b8003b;
 }
 
 #guestTableBody td {
     border: none;
     padding: 5px 0;
     flex: 1;
-    text-align: left; /* Alinear el texto a la izquierda */
+    text-align: left; 
 }
 
 #guestTableBody td:first-child {
@@ -152,11 +150,10 @@ th, td {
 #chatTable {
     display: flex;
     flex-direction: column;
-    width: 100%; /* Asegura que tome todo el ancho disponible */
+    width: 100%; 
 }
 
 
-/* Estilo para la tabla de chat */
 #chatTable th {
     display: none;
 }
@@ -164,34 +161,30 @@ th, td {
 #chatTable td {
     background-color: #e6b8003b;
     margin-bottom: 10px;
-    margin-top: 5px; /* Agrega margen superior pequeño */
+    margin-top: 5px; 
     color: #000;
     position: relative;
-    padding: 10px 15px; /* Reduce el padding */
+    padding: 10px 15px; 
     word-break: break-word;
 }
 
-/* Mensajes enviados en chat */
 #chatTable td.sent {
     background-color: #dcf8c6;
     align-self: flex-end;
     margin-left: auto;
 }
 
-/* Mensajes recibidos en chat */
 #chatTable td.received {
     background-color: #fff;
     color: #000;
     align-self: flex-start;
 }
 
-/* Contenedor de tabla de chat para ajustar la vista */
 #chatTable {
     display: flex;
     flex-direction: column;
 }
 
-/* Contenedor de filas de chat */
 #chatTableBody {
     display: flex;
     flex-direction: column;
@@ -206,8 +199,8 @@ th, td {
 
 .nav-buttons-container button ,
 .nav-buttons-container input[type="submit"] {
-    background-color: #ffcd00ba; /* Color amarillo Pac-Man */
-    color: black; /* Texto negro */
+    background-color: #ffcd00ba; 
+    color: black; 
     border: none;
     padding: 10px 20px;
     margin: 5px;
@@ -223,13 +216,13 @@ th, td {
 .playlist-heading {
     font-size: 24px;
     margin-bottom: 15px;
-    color: #27882fa3; /* Color amarillo Pac-Man */
+    color: #27882fa3; 
 }
 
 .playlist-list {
     list-style-type: none;
     padding: 0;
-    text-align: left; /* Alinea la lista a la derecha */
+    text-align: left; 
 }
 
 .playlist-list li {
@@ -238,17 +231,17 @@ th, td {
 
 .playlist-list li a {
     text-decoration: none;
-    color: #22620ec0; /* Color amarillo Pac-Man */
+    color: #22620ec0;
     transition: color 0.3s ease;
-    font-weight: bold; /* Texto en negrita */
+    font-weight: bold; 
     display: inline-block;
 }
 
 .playlist-list li a:hover {
-    color: #51d928cd; /* Color más claro al pasar el cursor */
-    text-decoration: underline; /* Subrayado al pasar el cursor */
+    color: #51d928cd; 
+    text-decoration: underline; 
 }
 #spotifyPlaylistContainer {
-    justify-content: flex-start !important; /* Alinea el contenido del contenedor al principio */
-    text-align: left; /* Alinea el contenido a la izquierda */
+    justify-content: flex-start !important;
+    text-align: left; 
 }
