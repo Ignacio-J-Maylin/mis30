@@ -39,7 +39,6 @@
 
 
         <div class="view-container" id="chatContainer">
-            <h1>Agregar un mensaje</h1>
             <form id="chatForm" class="form-container" onsubmit="submitChat(event)">
                 <input type="text" id="nickInput2" placeholder="Tu Nick" maxlength="20" required>
                 <input type="text" id="msgInput2" placeholder="Tu Mensaje" maxlength="100" required>
@@ -63,13 +62,12 @@
 
 
         <div class="view-container" id="formContainer">
-            <h1>Agregate a la lista</h1>
+            <h1>Lista de confirmados</h1>
             <form id="confirmationForm" class="form-container" onsubmit="submitForm(event)">
-                <input type="text" id="nickInput" placeholder="Tu apodo" maxlength="20" required>
-                <input type="text" id="msgInput" placeholder="Tu nombre de fantasía" maxlength="20" required>
+                <input type="text" id="nickInput" placeholder="Nombre" maxlength="20" required>
+                <input type="text" id="msgInput" placeholder="Apodo Fantacia" maxlength="20" required>
                 <input type="submit" value="Enviar">
             </form>
-            <h1>Confirmados</h1>
             <!-- Botones de paginación -->
             <div class="nav-buttons-container">
                 <button onclick="previousPage()">Anterior</button>
@@ -197,9 +195,7 @@
                     data.forEach(function (guest) {
                         var row = guestTableBody.insertRow();
                         var cellNick = row.insertCell();
-                        cellNick.textContent = guest.nick;
-                        var cellMsg = row.insertCell();
-                        cellMsg.textContent = guest.msg;
+                        cellNick.textContent = `${guest.nick} ALIAS: ${guest.msg}`;
                     });
                 })
                 .catch(error => console.error('Error:', error));

@@ -1,14 +1,8 @@
-/* style.css */
 body {
-    font-family: 'Arial', sans-serif;
-    color: #fff;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    background-color: #000; /* Fondo oscuro */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 10px;
+    max-width: 399px;
 }
 
 .background-image {
@@ -23,20 +17,15 @@ body {
 }
 
 .floating-container {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
     width: 100%;
-    max-width: 400px;
-    background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    display: flex; /* Agrega display flex */
+    flex-direction: column; /* Alinea los elementos en columna */
+    align-items: flex-center; 
 }
 
 .floating-container h1 {
     color: #ffcd00; /* Color amarillo Pac-Man */
+    margin-left: 10px;
     margin-bottom: 10px;
     font-size: 24px;
 }
@@ -44,22 +33,23 @@ body {
 .floating-container span {
     color: #ffcd00; /* Color amarillo Pac-Man */
     font-size: 20px;
+    margin-top: 10px;
 }
 
 .floating-container p {
     font-size: 18px;
     margin-bottom: 10px;
-    color: #fff; /* Texto blanco */
+    color: #000; /* Texto blanco */
 }
 .form-container input[type="text"],
 .form-container input[type="submit"] {
-    width: calc(100% - 22px);
+    width: calc(90% - 22px);
     padding: 10px;
     margin: 5px 0;
-    border: 1px solid #333; /* Borde oscuro */
+    border: 1px solid #ffcc00c7; /* Borde oscuro */
     border-radius: 5px;
-    background-color: #222; /* Fondo oscuro */
-    color: #fff; /* Texto blanco */
+    background-color: #ffcc004b; /* Fondo oscuro */
+    color: #000; /* Texto blanco */
 }
 
 .form-container input[type="text"]::placeholder {
@@ -84,7 +74,11 @@ body {
 
 .form-container {
     margin-top: 20px;
+    max-width: 90%; 
     text-align: center; /* Centrar los inputs */
+    display: flex; /* Agrega display flex */
+    flex-direction: column; /* Alinea los elementos en columna */
+    align-items: center; 
 }
 
 .form-container input[type="text"] {
@@ -93,8 +87,7 @@ body {
 }
 
 .view-container {
-    display: none;
-    max-width: 300px; /* Ajusta el ancho máximo del formulario */
+    display: none;/* Ajusta el ancho máximo del formulario */
     margin: 0 auto; 
 }
 
@@ -105,29 +98,109 @@ body {
 .minimized {
     display: none;
 }
-
-/* Ajustes para tablas */
+/* Ajustes generales para tablas */
 table {
     width: 100%;
-    border-collapse: collapse;
-    word-wrap: break-word; /* Permite que el contenido de las celdas se ajuste */
-    table-layout: fixed; /* Hace que las columnas tengan el mismo ancho */
+    word-wrap: break-word;
+    table-layout: fixed;
 }
 
+/* Estilo para encabezados generales */
 th, td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    color: #fff; /* Texto blanco */
+    padding: 10px;
+    border-radius: 15px;
+    color: #0000005e;
 }
 
-th {
-    background-color: #333; /* Fondo oscuro para encabezado */
+/* Estilo específico para la tabla de la lista de invitados */
+#guestTable {
+    width: 100%;
+    margin-top: 20px; /* Añade margen superior para separar visualmente */
 }
+
+#guestTable thead {
+    display: none; /* Ocultar encabezado de tabla */
+}
+
+#guestTableBody {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+#guestTableBody tr {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #e6b8003b; /* Fondo oscuro para las filas */
+}
+
+#guestTableBody td {
+    border: none;
+    padding: 5px 0;
+    flex: 1;
+    text-align: left; /* Alinear el texto a la izquierda */
+}
+
+#guestTableBody td:first-child {
+    font-weight: bold;
+}
+#chatTable {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Asegura que tome todo el ancho disponible */
+}
+
+
+/* Estilo para la tabla de chat */
+#chatTable th {
+    display: none;
+}
+
+#chatTable td {
+    background-color: #e6b8003b;
+    margin-bottom: 10px;
+    margin-top: 5px; /* Agrega margen superior pequeño */
+    color: #000;
+    position: relative;
+    padding: 10px 15px; /* Reduce el padding */
+    word-break: break-word;
+}
+
+/* Mensajes enviados en chat */
+#chatTable td.sent {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+/* Mensajes recibidos en chat */
+#chatTable td.received {
+    background-color: #fff;
+    color: #000;
+    align-self: flex-start;
+}
+
+/* Contenedor de tabla de chat para ajustar la vista */
+#chatTable {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenedor de filas de chat */
+#chatTableBody {
+    display: flex;
+    flex-direction: column;
+}
+
 
 .nav-buttons-container {
     margin-top: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .nav-buttons-container button {
