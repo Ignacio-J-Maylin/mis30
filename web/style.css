@@ -23,29 +23,31 @@ body {
     align-items: flex-center; 
 }
 
-.floating-container h1 {
-    color: #ffcd00; /* Color amarillo Pac-Man */
+.floating-container h1,
+.floating-container span {
     margin-left: 10px;
-    margin-bottom: 10px;
+    color: #ffcd00;
     font-size: 24px;
+    margin-bottom: 10px;
 }
 
 .floating-container span {
-    color: #ffcd00; /* Color amarillo Pac-Man */
     font-size: 20px;
     margin-top: 10px;
 }
 
-.floating-container p {
+.floating-container p ,.floating-container h4{
+    margin-left: 10px;
     font-size: 18px;
     margin-bottom: 10px;
-    color: #000; /* Texto blanco */
+    color: #000; /* Texto negro */
 }
+
 .form-container input[type="text"],
-.form-container input[type="submit"] {
-    width: calc(90% - 22px);
+.form-container input[type="submit"], .button-submit {
+    width: calc(95% - 22px);
     padding: 10px;
-    margin: 5px 0;
+    margin: 10px 0;
     border: 1px solid #ffcc00c7; /* Borde oscuro */
     border-radius: 5px;
     background-color: #ffcc004b; /* Fondo oscuro */
@@ -56,29 +58,28 @@ body {
     color: #888; /* Color de placeholder */
 }
 
-.form-container input[type="submit"] {
-    background-color: #ffcd00; /* Color amarillo Pac-Man */
+.form-container input[type="submit"] , .button-submit{
+    background-color: #ffcd00ba; /* Color amarillo Pac-Man */
     color: black; /* Texto negro */
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.form-container input[type="submit"]:hover {
+.form-container input[type="submit"]:hover, .button-submit:hover {
     background-color: #ffea70; /* Color más claro al pasar el cursor */
 }
 
-.form-container input[type="submit"]:active {
+.form-container input[type="submit"]:active, .button-submit:active {
     background-color: #e6b800; /* Color al hacer clic */
 }
 
 .form-container {
     margin-top: 20px;
-    max-width: 90%; 
+    max-width: 95%; 
     text-align: center; /* Centrar los inputs */
     display: flex; /* Agrega display flex */
     flex-direction: column; /* Alinea los elementos en columna */
-    align-items: center; 
 }
 
 .form-container input[type="text"] {
@@ -203,8 +204,9 @@ th, td {
     justify-content: space-around;
 }
 
-.nav-buttons-container button {
-    background-color: #ffcd00; /* Color amarillo Pac-Man */
+.nav-buttons-container button ,
+.nav-buttons-container input[type="submit"] {
+    background-color: #ffcd00ba; /* Color amarillo Pac-Man */
     color: black; /* Texto negro */
     border: none;
     padding: 10px 20px;
@@ -213,14 +215,15 @@ th, td {
     cursor: pointer;
 }
 
-.nav-buttons-container button:hover {
+.nav-buttons-container button:hover,
+.nav-buttons-container input[type="submit"]:hover  {
     background-color: #ffea70;
 }
 
 .playlist-heading {
     font-size: 24px;
     margin-bottom: 15px;
-    color: #ffcd00; /* Color amarillo Pac-Man */
+    color: #27882fa3; /* Color amarillo Pac-Man */
 }
 
 .playlist-list {
@@ -235,13 +238,17 @@ th, td {
 
 .playlist-list li a {
     text-decoration: none;
-    color: #ffcd00; /* Color amarillo Pac-Man */
+    color: #22620ec0; /* Color amarillo Pac-Man */
     transition: color 0.3s ease;
     font-weight: bold; /* Texto en negrita */
     display: inline-block;
 }
 
 .playlist-list li a:hover {
-    color: #ffea70; /* Color más claro al pasar el cursor */
+    color: #51d928cd; /* Color más claro al pasar el cursor */
     text-decoration: underline; /* Subrayado al pasar el cursor */
+}
+#spotifyPlaylistContainer {
+    justify-content: flex-start !important; /* Alinea el contenido del contenedor al principio */
+    text-align: left; /* Alinea el contenido a la izquierda */
 }

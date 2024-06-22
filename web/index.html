@@ -21,8 +21,9 @@
         <div class="view-container active" id="infoContainer">
             <h1>The 90s Come Back!</h1>
             <h4>Con el Colo , Car y Nachi te invitamos a nuestros.</h4>
-            <p>Prepárense para una noche llena de nostalgia, música y diversión de los 90. Les pedimos venir vestidos
-                con su mejor atuendo de los años 90, ya sea inspirado en su serie favorita, estrella pop, o simplemente
+            <p>Prepárense para una noche llena de nostalgia, música y diversión de los nacidos en los 90.</p>
+            <p>Les pedimos venir vestidos con su mejor atuendo de los años 90 a 2010, 
+                ya sea inspirado en su serie favorita, estrella pop, o simplemente
                 con la moda de la época.</p>
 
         </div>
@@ -39,15 +40,15 @@
 
 
         <div class="view-container" id="chatContainer">
+            <h1>Chat </h1>
             <form id="chatForm" class="form-container" onsubmit="submitChat(event)">
                 <input type="text" id="nickInput2" placeholder="Tu Nick" maxlength="20" required>
                 <input type="text" id="msgInput2" placeholder="Tu Mensaje" maxlength="100" required>
-                <input type="submit" value="Enviar">
+                <div class="nav-buttons-container">
+                    <input type="submit" value="Enviar" class="btn-submit">
+                    <button onclick="reloadChat()" class="btn-reload">Reload</button>
+                </div>
             </form>
-            <div class="nav-buttons-container">
-            <h2>Chat: </h2>
-                <button onclick="reloadChat()">Reload</button>
-            </div>
             <table id="chatTable">
                 <thead>
                     <tr>
@@ -65,7 +66,7 @@
             <h1>Lista de confirmados</h1>
             <form id="confirmationForm" class="form-container" onsubmit="submitForm(event)">
                 <input type="text" id="nickInput" placeholder="Nombre" maxlength="20" required>
-                <input type="text" id="msgInput" placeholder="Apodo Fantacia" maxlength="20" required>
+                <input type="text" id="msgInput" placeholder="Alias" maxlength="20" required>
                 <input type="submit" value="Enviar">
             </form>
             <!-- Botones de paginación -->
@@ -135,6 +136,10 @@
     <div class="background-image" style="background-image: url('img/background/28.jpg');"></div>
     <div class="background-image" style="background-image: url('img/background/29.jpg');"></div>
     <div class="background-image" style="background-image: url('img/background/30.jpg');"></div>
+    <div class="background-image" style="background-image: url('img/background/31.jpg');"></div>
+    <div class="background-image" style="background-image: url('img/background/32.jpg');"></div>
+    <div class="background-image" style="background-image: url('img/background/33.jpg');"></div>
+    <div class="background-image" style="background-image: url('img/background/34.jpg');"></div>
 
     <script>
         const views = document.querySelectorAll('.view-container');
