@@ -1,7 +1,12 @@
 version: '3.8'
 
 services:
-  mis30api:
+  api:
     image: mis30api
     ports:
       - "8080:8080"
+
+  web:
+    image: mis30web
+    ports:
+      - "8081:80"

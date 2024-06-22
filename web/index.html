@@ -21,47 +21,34 @@
         <div class="view-container active" id="infoContainer">
             <h1>The 90s Come Back!</h1>
             <h4>Con el Colo , Car y Nachi te invitamos a nuestros.</h4>
-            <p>Prepárense para una noche llena de nostalgia, música y diversión de los 90. Les pedimos venir vestidos con su mejor atuendo de los años 90, ya sea inspirado en su serie favorita, estrella pop, o simplemente con la moda de la época.</p>
+            <p>Prepárense para una noche llena de nostalgia, música y diversión de los 90. Les pedimos venir vestidos
+                con su mejor atuendo de los años 90, ya sea inspirado en su serie favorita, estrella pop, o simplemente
+                con la moda de la época.</p>
 
         </div>
 
         <div class="view-container active" id="info2Container">
             <h1>INFO</h1>
-            <p><strong>Comida:</strong> Pizzetitas , Salchicha Envueltas, Papitas. agregate a la lista </p>
+            <p><strong>Comida:</strong> Pizzetitas , Salchicha Envueltas, Papitas, papafritas , chisitos, palitos, sanguchitos</p>
             <p><strong>Dulce:</strong> Browne loco, Ositos borrachitos </p>
             <p><strong>Bebida: Traer para compartir </strong></p>
             <p><strong>Fecha:</strong> Sábado, 29 de junio</p>
             <p><strong>Lugar:</strong> Manda un mensaje a los cumplañeros para conocer el lugar</p>
             <p><strong>Obs:</strong> luz negra, cotillon , gliter, karaoke, beer pong</p>
         </div>
-        <div class="view-container" id="formContainer">
-            <h1>Confirma tu asistencia</h1>
-            <form id="confirmationForm" onsubmit="submitForm(event)">
-                <input type="text" id="nickInput" placeholder="Nick" required>
-                <input type="text" id="msgInput" placeholder="Fantacia" required>
-                <input type="submit" value="Enviar">
-            </form>
-            <h1>Confirmados</h1>
-            <table id="guestTable">
-                <thead>
-                    <tr>
-                        <th>Nick</th>
-                        <th>Fantacia</th>
-                    </tr>
-                </thead>
-                <tbody id="guestTableBody">
-                </tbody>
-            </table>
-        </div>
+
 
         <div class="view-container" id="chatContainer">
             <h1>Agregar un mensaje</h1>
-            <form id="chatForm" onsubmit="submitChat(event)">
-                <input type="text" id="nickInput2" placeholder="Tu Nick" required>
-                <input type="text" id="msgInput2" placeholder="Tu Mensaje" required>
+            <form id="chatForm" class="form-container" onsubmit="submitChat(event)">
+                <input type="text" id="nickInput2" placeholder="Tu Nick" maxlength="20" required>
+                <input type="text" id="msgInput2" placeholder="Tu Mensaje" maxlength="100" required>
                 <input type="submit" value="Enviar">
             </form>
-            <h2>Chat</h2>
+            <div class="nav-buttons-container">
+            <h2>Chat: </h2>
+                <button onclick="reloadChat()">Reload</button>
+            </div>
             <table id="chatTable">
                 <thead>
                     <tr>
@@ -73,11 +60,48 @@
             </table>
         </div>
 
+
+
+        <div class="view-container" id="formContainer">
+            <h1>Agregate a la lista</h1>
+            <form id="confirmationForm" class="form-container" onsubmit="submitForm(event)">
+                <input type="text" id="nickInput" placeholder="Tu apodo" maxlength="20" required>
+                <input type="text" id="msgInput" placeholder="Tu nombre de fantasía" maxlength="20" required>
+                <input type="submit" value="Enviar">
+            </form>
+            <h1>Confirmados</h1>
+            <!-- Botones de paginación -->
+            <div class="nav-buttons-container">
+                <button onclick="previousPage()">Anterior</button>
+                <span id="currentPageSpan">Página 1</span>
+                <button onclick="nextPage()">Siguiente</button>
+            </div>
+            <table id="guestTable">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Fantacia</th>
+                    </tr>
+                </thead>
+                <tbody id="guestTableBody">
+                </tbody>
+            </table>
+        </div>
+
+
         <div class="view-container" id="spotifyPlaylistContainer">
             <h1 class="playlist-heading">Playlist de Spotify</h1>
             <ul class="playlist-list">
-                <li><a href="https://open.spotify.com/playlist/0OlM5SEfN3G07ZJDYQtSuf?si=545878ee8d774be1&pt=4b7db7c590b18a7bb30b27aba54f925f" target="_blank">Internacional o bizarras</a></li>
-                <li><a href=" https://open.spotify.com/playlist/7LcJY3VV8NEyUc5r4FbL4x?si=fe0e4819bb3b4577&pt=37f5d85628fee1ab34aa2819d342e858" target="_blank">Reggueton</a></li>            
+                <li><a href="https://open.spotify.com/playlist/6JzOpLuonNi5T9oPpkm5cD?si=edddfe3ffb9c45ca&pt=737d28f9e42fe40b73a611fd30ad312b"
+                        target="_blank">&gt; Old School Reggueton-Cumbia</a></li>
+                <li><a href="https://open.spotify.com/playlist/7LcJY3VV8NEyUc5r4FbL4x?si=b38034196d8a42e5&pt=f79e067eaa0cdc504ed3aa788155a33e"
+                        target="_blank">&gt; Perreo Intenso</a></li>
+                <li><a href="https://open.spotify.com/playlist/7LcJY3VV8NEyUc5r4FbL4x?si=fe0e4819bb3b4577&pt=37f5d85628fee1ab34aa2819d342e858"
+                        target="_blank">&gt; Reggueton lo nuevo</a></li>
+                <li><a href="https://open.spotify.com/playlist/69omfj6fGGbSVuZhDVDJSK?si=60c7da79250148ad&pt=720af2a2b80dedf3a8c02e28ba16c48c"
+                        target="_blank">&gt; Random Bizzaras</a></li>
+                <li><a href="https://open.spotify.com/playlist/0OlM5SEfN3G07ZJDYQtSuf?si=545878ee8d774be1&pt=4b7db7c590b18a7bb30b27aba54f925f"
+                        target="_blank">&gt; Internacional</a></li>
             </ul>
         </div>
     </div>
@@ -162,8 +186,11 @@
         }
         var apiBaseURL = 'http://localhost:8080';
 
+        let currentPage = 0;
+        const pageSize = 5;
+
         function loadGuests() {
-            fetch(apiBaseURL + '/guests?page=0&size=10')
+            fetch(apiBaseURL + `/guests?page=${currentPage}&size=${pageSize}`)
                 .then(response => response.json())
                 .then(data => {
                     guestTableBody.innerHTML = '';
@@ -178,7 +205,30 @@
                 .catch(error => console.error('Error:', error));
         }
 
+        function updatePageNumber() {
+            currentPageSpan.textContent = `Página ${currentPage + 1}`;
+        }
+        function previousPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                loadGuests();
+                updatePageNumber();
+            }
+        }
 
+        function nextPage() {
+            currentPage++;
+            loadGuests();
+            updatePageNumber();
+        }
+
+        function reloadChat() {
+            // Limpia el contenido del chat
+            document.getElementById('chatTableBody').innerHTML = '';
+
+            // Vuelve a cargar los mensajes del chat
+            loadChats();
+        }
         function loadChats() {
             fetch(apiBaseURL + '/chats')
                 .then(response => response.json())
@@ -247,6 +297,30 @@
                 })
                 .catch(error => console.error('Error:', error));
         }
+
+        // Función para seleccionar un número aleatorio entre min y max (incluyendo ambos)
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Función para intercambiar la posición de dos elementos en un array
+        function swapElements(arr, indexA, indexB) {
+            const temp = arr[indexA].style.backgroundImage;
+            arr[indexA].style.backgroundImage = arr[indexB].style.backgroundImage;
+            arr[indexB].style.backgroundImage = temp;
+        }
+
+        function swapRandomImages() {
+            const images = document.querySelectorAll('.background-image');
+            const randomIndexA = getRandomInt(0, images.length - 1);
+            let randomIndexB = getRandomInt(0, images.length - 1);
+            while (randomIndexB === randomIndexA) { // Aseguramos que no se elija el mismo índice
+                randomIndexB = getRandomInt(0, images.length - 1);
+            }
+            swapElements(images, randomIndexA, randomIndexB);
+        }
+
+        setInterval(swapRandomImages, 150);
     </script>
 
 </body>

@@ -1,0 +1,174 @@
+/* style.css */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    background-color: #000; /* Fondo oscuro */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-gap: 10px;
+}
+
+.background-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 5px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.floating-container {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.floating-container h1 {
+    color: #ffcd00; /* Color amarillo Pac-Man */
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.floating-container span {
+    color: #ffcd00; /* Color amarillo Pac-Man */
+    font-size: 20px;
+}
+
+.floating-container p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #fff; /* Texto blanco */
+}
+.form-container input[type="text"],
+.form-container input[type="submit"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #333; /* Borde oscuro */
+    border-radius: 5px;
+    background-color: #222; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+}
+
+.form-container input[type="text"]::placeholder {
+    color: #888; /* Color de placeholder */
+}
+
+.form-container input[type="submit"] {
+    background-color: #ffcd00; /* Color amarillo Pac-Man */
+    color: black; /* Texto negro */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #ffea70; /* Color más claro al pasar el cursor */
+}
+
+.form-container input[type="submit"]:active {
+    background-color: #e6b800; /* Color al hacer clic */
+}
+
+.form-container {
+    margin-top: 20px;
+    text-align: center; /* Centrar los inputs */
+}
+
+.form-container input[type="text"] {
+    margin-bottom: 15px;
+    font-size: 16px; /* Aumenta el tamaño de fuente */
+}
+
+.view-container {
+    display: none;
+    max-width: 300px; /* Ajusta el ancho máximo del formulario */
+    margin: 0 auto; 
+}
+
+.view-container.active {
+    display: block;
+}
+
+.minimized {
+    display: none;
+}
+
+/* Ajustes para tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    word-wrap: break-word; /* Permite que el contenido de las celdas se ajuste */
+    table-layout: fixed; /* Hace que las columnas tengan el mismo ancho */
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    color: #fff; /* Texto blanco */
+}
+
+th {
+    background-color: #333; /* Fondo oscuro para encabezado */
+}
+
+.nav-buttons-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-buttons-container button {
+    background-color: #ffcd00; /* Color amarillo Pac-Man */
+    color: black; /* Texto negro */
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav-buttons-container button:hover {
+    background-color: #ffea70;
+}
+
+.playlist-heading {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #ffcd00; /* Color amarillo Pac-Man */
+}
+
+.playlist-list {
+    list-style-type: none;
+    padding: 0;
+    text-align: left; /* Alinea la lista a la derecha */
+}
+
+.playlist-list li {
+    margin-bottom: 10px;
+}
+
+.playlist-list li a {
+    text-decoration: none;
+    color: #ffcd00; /* Color amarillo Pac-Man */
+    transition: color 0.3s ease;
+    font-weight: bold; /* Texto en negrita */
+    display: inline-block;
+}
+
+.playlist-list li a:hover {
+    color: #ffea70; /* Color más claro al pasar el cursor */
+    text-decoration: underline; /* Subrayado al pasar el cursor */
+}
