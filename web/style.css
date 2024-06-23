@@ -1,8 +1,10 @@
 body {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
-    max-width: 399px;
+    overflow: hidden;
+    font-family: poppins, sans-serif;
+    color: #666666;
 }
 
 .background-image {
@@ -16,31 +18,33 @@ body {
     transition: opacity 0.5s ease;
 }
 
+.hidden {
+    opacity: 0;
+}
+
 .floating-container {
-    width: 100%;
-    display: flex; 
-    flex-direction: column; 
-    align-items: flex-center; 
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.99);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    min-height: 80vh;
+    min-width: 80%;
+}
+.floating-container h2 {
+color: #ff4081;
+margin-bottom: 10px; /* Margen inferior para separar el título del contenido */
 }
 
-.floating-container h1,
-.floating-container span {
-    margin-left: 10px;
-    color: #ffcd00;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.floating-container span {
-    font-size: 20px;
-    margin-top: 10px;
-}
-
-.floating-container p ,.floating-container h4{
-    margin-left: 10px;
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #000; 
+.floating-container p {
+font-size: 18px;
+margin-bottom: 10px; /* Margen inferior para separar los párrafos */
 }
 
 .form-container input[type="text"],
@@ -48,9 +52,9 @@ body {
     width: calc(95% - 22px);
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ffcc00c7; 
+    border: 1px solid #afafaf; 
     border-radius: 5px;
-    background-color: #ffcc004b;
+    background-color: #f4f4f4;
     color: #000;
 }
 
@@ -59,32 +63,41 @@ body {
 }
 
 .form-container input[type="submit"] , .button-submit{
-    background-color: #ffcd00ba; 
-    color: black;
+    background-color: #ff76a4; 
+    color: #f4f4f4;
     border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 95%;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .form-container input[type="submit"]:hover, .button-submit:hover {
-    background-color: #ffea70; 
+    background-color: #e8e8e8; 
 }
 
 .form-container input[type="submit"]:active, .button-submit:active {
-    background-color: #e6b800; 
+    background-color: #e8e8e8; 
 }
 
 .form-container {
     margin-top: 20px;
-    max-width: 95%; 
     text-align: center; 
     display: flex; 
     flex-direction: column; 
+    justify-content: center;
+    align-items: center;
 }
 
 .form-container input[type="text"] {
     margin-bottom: 15px;
     font-size: 16px;
+}
+
+.form-container input[type="text"]:focus {
+    outline: none;
+    border: 2px solid #ff76a4;
 }
 
 .view-container {
@@ -134,19 +147,18 @@ th, td {
     margin: 10px 0;
     padding: 10px;
     border-radius: 10px;
-    background-color: #e6b8003b;
+    background-color: #ff76a466;
 }
 
 #guestTableBody td {
     border: none;
     padding: 5px 0;
     flex: 1;
+    color: #6c6c6c;
     text-align: left; 
+    font-weight: 400;
 }
 
-#guestTableBody td:first-child {
-    font-weight: bold;
-}
 #chatTable {
     display: flex;
     flex-direction: column;
@@ -159,7 +171,7 @@ th, td {
 }
 
 #chatTable td {
-    background-color: #e6b8003b;
+    background-color: #ff76a44c;
     margin-bottom: 10px;
     margin-top: 5px; 
     color: #000;
@@ -169,7 +181,7 @@ th, td {
 }
 
 #chatTable td.sent {
-    background-color: #dcf8c6;
+    background-color: #ff76a4;
     align-self: flex-end;
     margin-left: auto;
 }
@@ -195,22 +207,25 @@ th, td {
     margin-top: 20px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .nav-buttons-container button ,
 .nav-buttons-container input[type="submit"] {
-    background-color: #ffcd00ba; 
-    color: black; 
+    background-color: #ff76a4; 
+    color: #ffffff; 
     border: none;
     padding: 10px 20px;
     margin: 5px;
     border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
 }
 
 .nav-buttons-container button:hover,
 .nav-buttons-container input[type="submit"]:hover  {
-    background-color: #ffea70;
+    background-color: #ff76a4;
 }
 
 .playlist-heading {
@@ -244,4 +259,38 @@ th, td {
 #spotifyPlaylistContainer {
     justify-content: flex-start !important;
     text-align: left; 
+}
+
+.chat-body{
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 25px;
+    padding: 10px;
+    overflow: auto;
+    height: 280px;
+    margin-top: 10px;
+}
+
+.view-container h3 {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.view-container p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.playlist-spotiyfy {
+    overflow: auto;
+    margin-top: 8px;
+    height: 440px;
+}
+
+.playlist-spotiyfy h4 {
+    margin-bottom: 0;
+}
+
+.playlist-spotiyfy a {
+    color: inherit;
+    text-decoration: none;
 }

@@ -5,22 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Back to the 90s</title>
+    <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <div class="floating-container">
-        <div class="nav-buttons-container">
-            <button onclick="prevView()">&lt;</button>
-            <button id="minimizeMaximizeBtn" onclick="minimizeOrMaximizeViews()">Minimizar</button>
-            <button onclick="nextView()">&gt;</button>
-        </div>
-
-
+    <button id="minimizeMaximizeBtn" onclick="minimizeOrMaximizeViews()" style="position: absolute; top: 2%; left:5%; background-color: #ff76a4; border: none; border-radius: 5px; height: 30px; color: #f4f4f4; width: 30px; font-weight: 600; font-size: 1rem;">-</button>
+    <div id="main-body" class="floating-container">
+        <div>
         <div class="view-container active" id="infoContainer">
-            <h1>The 90s Come Back!</h1>
-            <h4>Con el Colo , Car y Nachi te invitamos a nuestros.</h4>
+            <h2>The 90s Come Back!</h2>
+            <h4>El Colo, Car y Nachi festejan su cumpleaños</h4>
             <p>Prepárense para una noche llena de nostalgia, música y diversión de los nacidos en los 90.</p>
             <p>Les pedimos venir vestidos con su mejor atuendo de los años 90 a 2010, 
                 ya sea inspirado en su serie favorita, estrella pop, o simplemente
@@ -29,24 +28,30 @@
         </div>
 
         <div class="view-container active" id="info2Container">
-            <h1>INFO</h1>
-            <p><strong>Comida:</strong> Pizzetitas , Salchicha Envueltas, Papitas, papafritas , chisitos, palitos, sanguchitos</p>
-            <p><strong>Dulce:</strong> Browne loco, Ositos borrachitos </p>
-            <p><strong>Bebida: Traer para compartir </strong></p>
-            <p><strong>Fecha:</strong> Sábado, 29 de junio</p>
-            <p><strong>Lugar:</strong> Manda un mensaje a los cumplañeros para conocer el lugar</p>
-            <p><strong>Obs:</strong> luz negra, cotillon , gliter, karaoke, beer pong</p>
+            <h2>Información</h2>
+            <h3>Comida</h3>
+            <p>Pizzetitas , Salchicha Envueltas, Papitas, papafritas , chisitos, palitos, sanguchitos</p>
+            <h3>Dulce</h3>
+            <p>Brownie loco, Ositos borrachitos </p>
+            <h3>Bebida</h3>
+            <p>Traer para compartir</p>
+            <h3>Fecha</h3>
+            <p>Sábado, 29 de junio</p>
+            <h3>Lugar</h3> 
+            <p>Manda un mensaje a los cumplañeros para conocer el lugar</p>
+            <h3>Obs</h3> 
+            <p>Luz negra, cotillon , gliter, karaoke, beer pong</p>
         </div>
 
 
         <div class="view-container" id="chatContainer">
-            <h1>Chat </h1>
+            <h2>Chat </h2>
             <form id="chatForm" class="form-container" onsubmit="submitChat(event)">
                 <input type="text" id="nickInput2" placeholder="Tu Nick" maxlength="20" required>
                 <input type="text" id="msgInput2" placeholder="Tu Mensaje" maxlength="100" required>
                 <div class="nav-buttons-container">
                     <input type="submit" value="Enviar" class="btn-submit">
-                    <button onclick="reloadChat()" class="btn-reload">Reload</button>
+                    <button onclick="reloadChat()" class="btn-reload">Actualizar</button>
                 </div>
             </form>
             <table id="chatTable">
@@ -55,7 +60,7 @@
                         <th>Últimos mensajes</th>
                     </tr>
                 </thead>
-                <tbody id="chatTableBody">
+                <tbody id="chatTableBody" class="chat-body">
                 </tbody>
             </table>
         </div>
@@ -63,7 +68,7 @@
 
 
         <div class="view-container" id="formContainer">
-            <h1>Lista de confirmados</h1>
+            <h2>Lista de confirmados</h2>
             <form id="confirmationForm" class="form-container" onsubmit="submitForm(event)">
                 <input type="text" id="nickInput" placeholder="Nombre" maxlength="20" required>
                 <input type="text" id="msgInput" placeholder="Alias" maxlength="20" required>
@@ -89,21 +94,36 @@
 
 
         <div class="view-container" id="spotifyPlaylistContainer">
-            <h1 class="playlist-heading">Playlist de Spotify</h1>
-            <ul class="playlist-list">
-                <li><a href="https://open.spotify.com/playlist/6JzOpLuonNi5T9oPpkm5cD?si=edddfe3ffb9c45ca&pt=737d28f9e42fe40b73a611fd30ad312b"
-                        target="_blank">&gt; Old School Reggueton-Cumbia</a></li>
-                <li><a href="https://open.spotify.com/playlist/7LcJY3VV8NEyUc5r4FbL4x?si=b38034196d8a42e5&pt=f79e067eaa0cdc504ed3aa788155a33e"
-                        target="_blank">&gt; Perreo Intenso</a></li>
-                <li><a href="https://open.spotify.com/playlist/7LcJY3VV8NEyUc5r4FbL4x?si=fe0e4819bb3b4577&pt=37f5d85628fee1ab34aa2819d342e858"
-                        target="_blank">&gt; Reggueton lo nuevo</a></li>
-                <li><a href="https://open.spotify.com/playlist/69omfj6fGGbSVuZhDVDJSK?si=60c7da79250148ad&pt=720af2a2b80dedf3a8c02e28ba16c48c"
-                        target="_blank">&gt; Random Bizzaras</a></li>
-                <li><a href="https://open.spotify.com/playlist/0OlM5SEfN3G07ZJDYQtSuf?si=545878ee8d774be1&pt=4b7db7c590b18a7bb30b27aba54f925f"
-                        target="_blank">&gt; Internacional</a></li>
-            </ul>
+            <h2 class="playlist-heading">Playlist de Spotify</h2>
+            <p>Te compartimos las playlist que van sonar en la fiesta. Tocando el nombre de la lista vas a poder agregar musica!</p>
+            <div class="playlist-spotiyfy">
+                <h4><a href="https://open.spotify.com/playlist/6JzOpLuonNi5T9oPpkm5cD?si=edddfe3ffb9c45ca&pt=737d28f9e42fe40b73a611fd30ad312b"
+                    target="_blank">Old School Reggaeton-Cumbia</a></h4>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6JzOpLuonNi5T9oPpkm5cD?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <h4><a href="https://open.spotify.com/playlist/7LcJY3VV8NEyUc5r4FbL4x?si=b38034196d8a42e5&pt=f79e067eaa0cdc504ed3aa788155a33e"
+                    target="_blank">Perreo Intenso</a></h4>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7LcJY3VV8NEyUc5r4FbL4x?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <h4><a href="https://open.spotify.com/playlist/1fT6snwMoyaI1srjGvlwfY?si=f6039345113146f7&pt=5d1311be833fd813934c2e8076892d76"
+                    target="_blank">Reggaeton lo nuevo</a></h4>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1fT6snwMoyaI1srjGvlwfY?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <h4><a href="https://open.spotify.com/playlist/69omfj6fGGbSVuZhDVDJSK?si=60c7da79250148ad&pt=720af2a2b80dedf3a8c02e28ba16c48c"
+                    target="_blank">Random Bizzaras</a></h4>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/69omfj6fGGbSVuZhDVDJSK?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <h4><a href="https://open.spotify.com/playlist/0OlM5SEfN3G07ZJDYQtSuf?si=545878ee8d774be1&pt=4b7db7c590b18a7bb30b27aba54f925f"
+                    target="_blank">Internacional</a></h4>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0OlM5SEfN3G07ZJDYQtSuf?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
+            </div>
         </div>
     </div>
+
+        <div class="nav-buttons-container">
+            <button onclick="prevView()">&lt;</button>
+            <button onclick="nextView()">&gt;</button>
+        </div>
+
+    </div>
+
+
 
     <!-- Imágenes de fondo -->
     <div class="background-image" style="background-image: url('img/background/1.jpg');"></div>
@@ -164,13 +184,15 @@
 
         function minimizeOrMaximizeViews() {
             const minimizeMaximizeBtn = document.getElementById('minimizeMaximizeBtn');
-
-            if (minimizeMaximizeBtn.textContent === 'Minimizar') {
+            const floating = document.getElementById('main-body')
+            if (minimizeMaximizeBtn.textContent === '-') {
                 minimizeViews();
-                minimizeMaximizeBtn.textContent = 'Maximizar';
+                floating.classList.add('hidden')
+                minimizeMaximizeBtn.textContent = '+';
             } else {
                 maximizeViews();
-                minimizeMaximizeBtn.textContent = 'Minimizar';
+                floating.classList.remove('hidden')
+                minimizeMaximizeBtn.textContent = '-';
             }
         }
 
@@ -190,7 +212,7 @@
         var apiBaseURL = 'http://ec2-18-229-159-185.sa-east-1.compute.amazonaws.com/api';
 
         let currentPage = 0;
-        const pageSize = 5;
+        const pageSize = 3;
 
         function loadGuests() {
             fetch(apiBaseURL + `/guests?page=${currentPage}&size=${pageSize}`)
@@ -322,6 +344,7 @@
         }
 
         setInterval(swapRandomImages, 150);
+        
     </script>
 
 </body>
