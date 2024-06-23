@@ -165,23 +165,23 @@
         const views = document.querySelectorAll('.view-container');
         let currentViewIndex = 0;
         let lastViewIndex = 0; // Variable para almacenar el índice de la última vista activa
-
+    
         function updateView() {
             views.forEach((view, index) => {
                 view.classList.toggle('active', index === currentViewIndex);
             });
         }
-
+    
         function prevView() {
             currentViewIndex = (currentViewIndex - 1 + views.length) % views.length;
             updateView();
         }
-
+    
         function nextView() {
             currentViewIndex = (currentViewIndex + 1) % views.length;
             updateView();
         }
-
+    
         function minimizeOrMaximizeViews() {
             const minimizeMaximizeBtn = document.getElementById('minimizeMaximizeBtn');
             const floating = document.getElementById('main-body')
@@ -195,7 +195,7 @@
                 minimizeMaximizeBtn.textContent = '-';
             }
         }
-
+    
         function minimizeViews() {
             views.forEach((view, index) => {
                 if (view.classList.contains('active')) {
@@ -204,16 +204,16 @@
                 view.classList.remove('active');
             });
         }
-
+    
         function maximizeViews() {
             currentViewIndex = lastViewIndex; // Vuelve a la última vista activa antes de minimizar
             updateView();
         }
         var apiBaseURL = 'https://fiesta.hashrate.com.ar/api';
-
+    
         let currentPage = 0;
         const pageSize = 3;
-
+    
         function loadGuests() {
             fetch(apiBaseURL + `/guests?page=${currentPage}&size=${pageSize}`)
                 .then(response => response.json())
@@ -227,7 +227,7 @@
                 })
                 .catch(error => console.error('Error:', error));
         }
-
+    
         function updatePageNumber() {
             currentPageSpan.textContent = `Página ${currentPage + 1}`;
         }
@@ -238,17 +238,17 @@
                 updatePageNumber();
             }
         }
-
+    
         function nextPage() {
             currentPage++;
             loadGuests();
             updatePageNumber();
         }
-
+    
         function reloadChat() {
             // Limpia el contenido del chat
             document.getElementById('chatTableBody').innerHTML = '';
-
+    
             // Vuelve a cargar los mensajes del chat
             loadChats();
         }
@@ -265,20 +265,20 @@
                 })
                 .catch(error => console.error('Error:', error));
         }
-
+    
         // Cargar los asistentes al cargar la página
         window.onload = function () {
             loadGuests();
             loadChats();
             updateView();  // Muestra la información por defecto al cargar la página
         };
-
+    
         function submitForm(event) {
             event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
-
+    
             var nick = document.getElementById('nickInput').value;
             var msg = document.getElementById('msgInput').value;
-
+    
             // Enviar datos a la API
             fetch(apiBaseURL + '/guests', {
                 method: 'POST',
@@ -297,14 +297,14 @@
         }
 
 
-
+    
         function submitChat(event) {
             event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
-
+    
             var nick = document.getElementById('nickInput2').value;
             var msg = document.getElementById('msgInput2').value;
             var newMsg = nick + ': ' + msg; // Crear un string con el formato nick: msg
-
+    
             // Enviar datos a la API
             fetch(apiBaseURL + '/chats', {
                 method: 'POST',
@@ -320,19 +320,27 @@
                 })
                 .catch(error => console.error('Error:', error));
         }
-
+    
+        // Recarga automática del chat cada 3 segundos cuando está activo
+        setInterval(() => {
+            const chatContainer = document.getElementById('chatContainer');
+            if (chatContainer.classList.contains('active')) {
+                reloadChat();
+            }
+        }, 10000);
+    
         // Función para seleccionar un número aleatorio entre min y max (incluyendo ambos)
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
-
+    
         // Función para intercambiar la posición de dos elementos en un array
         function swapElements(arr, indexA, indexB) {
             const temp = arr[indexA].style.backgroundImage;
             arr[indexA].style.backgroundImage = arr[indexB].style.backgroundImage;
             arr[indexB].style.backgroundImage = temp;
         }
-
+    
         function swapRandomImages() {
             const images = document.querySelectorAll('.background-image');
             const randomIndexA = getRandomInt(0, images.length - 1);
@@ -342,9 +350,9 @@
             }
             swapElements(images, randomIndexA, randomIndexB);
         }
-
+    
         setInterval(swapRandomImages, 150);
-        
+    
     </script>
 
 </body>
